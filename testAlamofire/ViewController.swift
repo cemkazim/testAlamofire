@@ -11,25 +11,13 @@ import Alamofire
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var myTableView: UITableView!
-
     var request = AF.request("https://demo2066974.mockable.io/")
 
     var myArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupForTableView()
         getMyData()
-    }
-
-    func setupForTableView() {
-        myTableView.delegate = self
-        myTableView.dataSource = self
-    }
-
-    func reloadTableView() {
-        myTableView.reloadData()
     }
 
     func getMyData() {
@@ -42,32 +30,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func dataFetchingButton(_ sender: UIBarButtonItem) {
-        if myArray == [] {
-            getMyData()
-        }
-        reloadTableView()
-    }
-}
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCellId") as? MyTableViewCell {
-            cell.myTableViewCellLabel.text = myArray[indexPath.row]
-            return cell
-        } else {
-            return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            myArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+        
     }
 }
