@@ -11,25 +11,27 @@ import Alamofire
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var customStackView: UIStackView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var siteLabel: UILabel!
+    @IBOutlet weak var objectLabel: UILabel!
+    
     var request = AF.request("https://demo2066974.mockable.io/")
-
-    var myArray = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMyData()
     }
 
     func getMyData() {
         request.responseDecodable(of: DataModel.self) { [weak self] (response) in
             guard let data = response.value, let strongSelf = self else { return }
-            strongSelf.myArray.append(data.name)
-            strongSelf.myArray.append(data.job)
-            strongSelf.myArray.append(data.artist)
+            strongSelf.nameLabel.text = data.name
+            strongSelf.siteLabel.text =  data.site
+            strongSelf.objectLabel.text = data.object
         }
     }
 
-    @IBAction func dataFetchingButton(_ sender: UIBarButtonItem) {
+    @IBAction func fetchDataButtonClicked(_ sender: UIButton) {
         
     }
 }

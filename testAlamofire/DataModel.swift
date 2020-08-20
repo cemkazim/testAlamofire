@@ -10,12 +10,12 @@ import Foundation
 
 struct DataModel: Decodable {
     let name: String
-    let job: String
-    let artist: String
+    let site: String
+    let object: String
     
     enum CodingKeys: String, CodingKey {
         case name
-        case job
-        case artist
+        case site
+        case object
     }
 }
