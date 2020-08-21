@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var siteLabel: UILabel!
     @IBOutlet weak var objectLabel: UILabel!
     
-    var request = AF.request("https://demo2066974.mockable.io/")
+    var request = AF.request("https://demo0634638.mockable.io/")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func fetchDataButtonClicked(_ sender: UIButton) {
-        
+        getMyData()
     }
 }
